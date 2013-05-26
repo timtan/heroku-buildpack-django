@@ -114,3 +114,9 @@ done
 if [ -f $1/npm_requirements.txt ]; then
   source $BIN_DIR/compilenodejs $1 $2
 fi
+
+cd $BUILD_DIR
+if [ -x scripts/post_compile ]; then
+  echo "Running post_compile hook."
+  source scripts/post_compile
+fi
